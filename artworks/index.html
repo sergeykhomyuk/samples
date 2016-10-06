@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://54.77.217.175">
+<head>
+    <meta charset="utf-8" />
+    <title>Artworks</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/selectize.bootstrap3.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/pixel-admin.css" rel="stylesheet" />
+    <link href="css/themes.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/ladda-themeless.css" rel="stylesheet" />
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&amp;subset=latin" rel="stylesheet" type="text/css">
+    <!--[if IE 9]>
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="scripts/libs/shives/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="scripts/libs/angularjs/ie-shiv.js"></script>
+        <script src="scripts/libs/shives/json2.js"></script>
+    <![endif]-->
+    
+    
+    <!-- DEV -->
+    <!--<script src="scripts/libs/requirejs/require.js" data-main="scripts/app/main.dev"></script>-->
+    
+    <!-- PRODUCTION -->
+    <script src="./scripts/libs/requirejs/require.min.js"></script>
+    <script src="./scripts/libs/libs.min.js"></script>
+    <script src="./scripts/app/app.min.js"></script>
+    <script src="./scripts/app/main.js"></script>
+
+</head>
+<body ng-controller="applicationController" class="theme-default page-artworks">
+    <div class="panel artworks">
+
+        <div class="artworks-header">
+            <div class="artworks-logo">
+                <h1>
+                    <i class="fa fa-picture-o"></i>
+                    Artworks
+                </h1>
+            </div>
+            <div class="artworks-header-panel">
+                <input type="text" class="artworks-header-filter" placeholder="Search by artist" ng-model="filters.artist" />
+                <button href="javascript:void(0)" ng-click="createArtwork()" is-loading="state.isLoading || state.isCreating" class="btn btn-info pull-right create ladda-button" data-style="zoom-in">Create artwork</button>
+            </div>
+        </div>
+        <hr>
+        <div class="artworks-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Artist & Title & Date
+                        </th>
+                        <th>
+                            Medium & Material
+                        </th>
+                        <th>
+                            Dimensions & Color
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ui-artwork ng-repeat="artwork in artworks" ng-show="artwork | artistFilter: filters.artist" artwork="artwork" on-removed="removeArtwork(artwork)" ng-hide="state.isLoading"></tbody>
+                <tbody ng-show="state.isLoading">
+                    <tr>
+                        <td colspan="6">
+                            <h4 class="text-center text-light-gray"><i class="fa fa-spinner fa-spin"></i> Loading...</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿body {
+    padding-top: 20px;
+}
+
+.page-artworks .artworks {
+    padding: 0 20px;
+}
+
+    .page-artworks .artworks hr {
+        border: none;
+        border-bottom: 3px solid #f1f1f1;
+        margin: 0 -20px;
+    }
+
+.page-artworks .artworks-header, .page-artworks .artworks-table {
+    padding: 30px 0;
+}
+
+    .page-artworks .artworks-header:after, .page-artworks .artworks-header:before, .page-artworks .artworks-table:after, .page-artworks .artworks-table:before {
+        content: " ";
+        display: table;
+    }
+
+    .page-artworks .artworks-header:after, .page-artworks .artworks-table:after {
+        clear: both;
+    }
+
+.page-artworks .artworks-logo {
+    font-size: 14px;
+    line-height: 19px;
+    height: 60px;
+}
+
+.page-artworks .artworks-header-panel {
+    background: #f7f7f7;
+    color: #888;
+    font-weight: 600;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 25px;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.artworks-header-panel .artworks-header-filter {
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+
+
+.page-artworks table {
+    width: 100%;
+}
+
+    .page-artworks table thead {
+        background: #f7f7f7;
+        color: #888;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .page-artworks table tbody tr {
+        font-size: 14px;
+    }
+
+        .page-artworks table tbody tr + tr + tr {
+            border-bottom: 1px solid #f1f1f1;
+            border-top: none;
+        }
+
+    .page-artworks table td, .page-artworks table th {
+        border-left: 1px solid #fff;
+        font-weight: 600;
+        padding: 7px 0 7px 15px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .page-artworks table td {
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+@media (min-width: 768px) {
+    .page-artworks .artworks {
+        padding: 0 40px;
+    }
+
+        .page-artworks .artworks hr {
+            border: none;
+            border-bottom: 3px solid #f1f1f1;
+            margin: 0 -40px;
+        }
+
+
+
+    .page-artworks .artworks-logo, .page-artworks .artworks-header-panel {
+        width: 50%;
+    }
+
+    .page-artworks .artworks-logo {
+        float: left;
+    }
+
+    .page-artworks .artworks-header-panel {
+        float: right;
+        margin-top: 0;
+    }
+}
+
+.description {
+    padding-top: 20px;
+}
+
+.delete {
+    margin-top: 24px;
+}
+
+
+.artworks-header-panel .create {
+    margin-top: 15px;
+}

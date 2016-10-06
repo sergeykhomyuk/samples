@@ -1,0 +1,10 @@
+﻿<div>
+    <span ng-class="{'text-danger': state.isFailed }">
+        <i class="fa {{::icon}}"></i>
+        {{::name}}
+    </span>
+
+    <span class="pull-right label" ng-class="{'label-success': state.isSucceeded, 'label-danger': state.isFailed}">
+        {{::(state.isSucceeded ? 'Success' : 'Failed')}}
+    </span>
+</div>

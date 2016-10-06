@@ -1,0 +1,30 @@
+﻿<div class="row item-header">
+    <div class="col-md-2 col-sm-4 col-xs-8">                
+        <i class="fa fa-angle-right pull-left expand-icon" ng-hide="state.isDisabled" ng-class="{'fa-rotate-90': isExpanded}"></i>
+        <span>
+            <i class="fa" ng-class="{'fa-th': state.isFirewall, 'fa-desktop': state.isBuild}"></i>
+            {{:: item.name}}
+        </span>
+    </div>
+    <div class="col-md-2 col-sm-3 hidden-xs text-center">{{:: item.owner}}</div>
+    <div class="col-md-2 col-sm-3 hidden-xs text-center">{{ item.timeStarted | date}}</div>
+    <div class="col-md-1 col-sm-2 col-xs-4 text-center">
+        <app:item-state state="item.state"
+                        completed-text="{{:: state.isFirewall ? 'Accepted' : 'Complete'}}"
+                        failed-text="{{:: state.isBuild ? 'Rejected' : 'Failed'}}">
+        </app:item-state>
+    </div>
+    <div class="col-md-1 hidden-sm hidden-xs text-center">
+        <app:item-state state="item.metrics.state"></app:item-state>
+    </div>
+    <div class="col-md-1 hidden-sm hidden-xs text-center">
+        <app:item-state state="item.build.state"></app:item-state>
+    </div>
+    <div class="col-md-1 hidden-sm hidden-xs text-center">
+        <app:item-state state="item.unitTest.state"></app:item-state>
+    </div>
+    <div class="col-md-1 hidden-sm hidden-xs text-center">
+        <app:item-state state="item.functionalTest.state"></app:item-state>
+    </div>
+</div>
+    

@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <button class="close" ng-click="$close()"><span>×</span></button>
+    <h4 class="modal-title">
+        <app:issue-type-message issue-type="issue.type"></app:issue-type-message>
+    </h4>
+</div>
+
+<div class="modal-body" ng-show="state.isLoading">
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i> <span class="text-muted">Loading...</span>
+    </h1>
+</div>
+
+<div class="modal-body" ng-hide="state.isLoading">
+    <h4>{{issue.name}}</h4>
+    <div>
+        Issue details:
+    </div>
+    <div>
+        <pre class="pre-scrollable">{{issue.description}}</pre>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="$close()" type="button">Close</button>
+</div>

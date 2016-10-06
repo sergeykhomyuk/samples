@@ -1,0 +1,12 @@
+﻿<div>
+    <span ng-class="{'text-danger': state.isReduced}">
+        {{::name}}
+    </span>
+    <span class="pull-right">
+        <span ng-class="{'text-success': state.isIncreased, 'text-danger': state.isReduced, 'text-muted': state.isNotChanged }">
+            <i class="fa" ng-class="{'fa-arrow-circle-up': state.isIncreased, 'fa-arrow-circle-down': state.isReduced, 'fa-arrow-circle-right': state.isNotChanged }"></i>
+            {{::score.value}}
+        </span>
+    </span>
+</div>
+

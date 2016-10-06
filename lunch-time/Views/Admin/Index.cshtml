@@ -1,0 +1,71 @@
+﻿@using Dinner.Helpers
+@model Dinner.Models.MenuFormationModel
+@{
+    ViewBag.Title = "Формирование меню";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-view></div>
+
+@using (Html.AngularTemplate("/template/admin/menu.tmpl"))
+{
+     @Html.Partial("Partials/Menu/_Menu")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/add-course-to-menu.tmpl"))
+{
+    @Html.Partial("Partials/Menu/_AddCourseToMenu")
+}
+
+@* Menu templates *@
+@using (Html.AngularTemplate("/template/admin/menu/menu.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Menu/_Menu")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/menu/course.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Menu/_MenuCourse")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/menu/course/change-max-orders.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Menu/_ChangeMaxOrders")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/menu/course/confirm-remove.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Menu/_ConfirmRemoveCourseFromMenu")
+}
+
+
+@* Courses templates *@
+@using (Html.AngularTemplate("/template/admin/menu/courses.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_Courses")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/courses/category.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_CoursesCategory")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/courses/course.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_Course")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/courses/course/confirm-remove.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_ConfirmRemoveCourse")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/courses/course/edit.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_EditCourse")
+}
+
+@using (Html.AngularTemplate("/template/admin/menu/courses/course/create.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_EditCourse")
+}

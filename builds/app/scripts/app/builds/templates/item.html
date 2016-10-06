@@ -1,0 +1,20 @@
+﻿<div class="item">
+    <app:accordion-group expanded="state.isExpanded"
+                         disabled="state.isDisabled"
+                         ng-class="{'panel-bordered-success': state.isSucceeded, 'panel-bordered-danger': state.isFailed, 'panel-bordered-info': state.isRunning, 'panel-bordered-default': state.isPending}">
+
+        <app:accordion-group-header>
+            <app:item-header item="item" expanded="state.isExpanded"></app:item-header>
+        </app:accordion-group-header>
+
+        <app:accordion-group-content>
+            <app:item-details ng-if="!state.isDisabled"
+                              item="item"
+                              on-find-issues="findIssues()"
+                              on-find-merged-build="findMergedBuild()"
+                              on-deploy-build="deployBuild(target)">
+            </app:item-details>
+        </app:accordion-group-content>
+
+    </app:accordion-group>    
+</div>

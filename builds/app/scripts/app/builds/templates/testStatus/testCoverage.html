@@ -1,0 +1,11 @@
+﻿<div style="padding-top: 20px;">
+    <div class="text-center">
+        <span class="text-muted">Code coverage:</span>
+        <b>{{:: coveragePercent | percent}}</b>
+    </div>
+    <div class="progress progress-sm">
+        <div role="progressbar" ng-style="{ width: coveragePercent + '%' }" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{:: coveragePercent}}" class="progress-bar progress-bar-success">
+            <span class="sr-only">{{:: coveragePercent | percent}}</span>
+        </div>
+    </div>
+</div>

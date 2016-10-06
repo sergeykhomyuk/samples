@@ -1,0 +1,150 @@
+﻿<tbody ng-form="artworkForm">
+    <tr ng-show="state.isLoading">
+        <td colspan="6">
+            <h4 class="text-center text-light-gray"><i class="fa fa-spinner fa-spin"></i> Loading...</h4>
+        </td>
+    </tr>
+    <tr ng-hide="state.isLoading">
+        <td class="col-md-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">Artist</label>
+                        <input type="text" name="artist" ng-model="artwork.artist" ng-change="artworkChanged(artwork)" placeholder="Artist"
+                               ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">Title</label>
+                        <input type="text" name="title" ng-model="artwork.title" ng-change="artworkChanged(artwork)" placeholder="Title" 
+                               ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.year.$invalid && artworkForm.year.$dirty }">
+                        <label class="control-label">Year</label>
+                        <input type="number" ng-min="0" name="year" ng-model="artwork.year" ng-change="artworkChanged(artwork)" placeholder="Year"
+                               ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" class="form-control" />
+                        <p ng-show="artworkForm.year.$invalid && artworkForm.year.$dirty" class="help-block">Invalid artwork year.</p>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="col-md-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr has-feedback">
+                        <label class="control-label">Medium <i class="fa fa-spinner fa-spin" ng-show="state.isMediumLoading"></i></label>
+                        <ui:medium medium="artwork.medium" on-changed="changeMedium(medium)" on-loaded="mediumsLoaded()"></ui:medium>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">Materials <i class="fa fa-spinner fa-spin" ng-show="state.isMaterialsLoading"></i></label>
+                        <ui:material materials="artwork.materials" on-add="addMaterial(material)" on-remove="removeMaterial(material)" on-loaded="materialsLoaded()"></ui:material>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="col-md-3">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.width.$invalid && artworkForm.width.$dirty }">
+                        <label class="control-label">Width</label>
+                        <input type="number" ng-min="0" name="width" class="form-control" ng-enabled="artwork.medium.isResolved" ng-model="artwork.dimension.width" ng-change="artworkChanged(artwork)" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" placeholder="Height">
+                        <p ng-show="artworkForm.width.$invalid && artworkForm.width.$dirty" class="help-block">Invalid artwork width.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">Units</label>
+                        <select class="form-control" ng-model="artwork.unit" ng-options="unit.value as unit.name for unit in units" ng-change="artworkChanged(artwork)"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.height.$invalid && artworkForm.height.$dirty }">
+                        <label class="control-label">Height</label>
+                        <input type="number" ng-min="0" name="height" class="form-control" ng-enabled="artwork.medium.isResolved" ng-model="artwork.dimension.height" ng-change="artworkChanged(artwork)" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" placeholder="Width">
+                        <p ng-show="artworkForm.height.$invalid && artworkForm.height.$dirty" class="help-block">Invalid artwork height.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-hide="!artwork.medium.isResolved || artwork.medium.dimensions < 3">
+                <div class="col-sm-6 ">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.depth.$invalid && artworkForm.depth.$dirty }">
+                        <label class="control-label">Depth</label>
+                        <input type="number" name="depth" ng-min="1" class="form-control" ng-model="artwork.dimension.depth" ng-change="artworkChanged(artwork)" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" placeholder="Depth">
+                        <p ng-show="artworkForm.depth.$invalid && artworkForm.depth.$dirty" class="help-block">Invalid artwork depth.</p>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="col-md-2">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.price.$invalid && artworkForm.price.$dirty }">
+                        <label class="control-label">Price</label>
+                        <div class="input-group">
+                            <input type="number" name="price" ng-min="0" placeholder="Price" ng-model="artwork.price" ng-change="artworkChanged(artwork)" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" class="form-control" />
+                            <span class="input-group-addon">$</span>
+                        </div>
+                        <p ng-show="artworkForm.price.$invalid && artworkForm.price.$dirty" class="help-block">Invalid artwork price.</p>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="artwork.isIncludesVat" ng-change="artworkChanged(artwork)" ng-value="false" class="px">
+                            <span class="lbl">Net</span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="artwork.isIncludesVat" ng-change="artworkChanged(artwork)" ng-value="true" class="px">
+                            <span class="lbl">Gross</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12" ng-hide="artwork.isIncludesVat">
+                    <div class="form-group no-margin-hr dark" ng-class="{ 'has-error': artworkForm.vat.$invalid && artworkForm.vat.$dirty }">
+                        <label class="control-label">VAT%</label>
+                        <div class="input-group">
+                            <input type="number" name="vat" ng-min="0" ng-max="100" placeholder="VAT%" ng-change="artworkChanged(artwork)" ng-model="artwork.vat" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }" class="form-control" />
+                            <span class="input-group-addon">%</span>
+                        </div>
+                        <p ng-show="artworkForm.vat.$invalid && artworkForm.vat.$dirty" class="help-block">Invalid artwork vat.</p>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="col-md-1">
+            <a href="javascript:void(0)" class="btn btn-danger pull-right delete" ng-click="remove()">Delete</a>
+        </td>
+
+    </tr>
+    <tr ng-hide="state.isLoading">
+        <td colspan="5">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <a href="javascript:void(0)" class="btn btn-block" ng-click="toggleDescription()">{{state.showDescription ? 'Hide' : 'Show'}} description</a>
+                </div>
+            </div>
+            <div class="row description" ng-show="state.showDescription">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">Description</label>
+                        <textarea class="form-control" rows="10" ng-model="artwork.description" ng-change="artworkChanged(artwork)" ng-model-options="{ updateOn: config.modelOptions.updateOn, debounce: config.modelOptions.debounce }"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </td>
+    </tr>
+</tbody>

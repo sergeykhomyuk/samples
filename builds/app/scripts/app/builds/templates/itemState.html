@@ -1,0 +1,4 @@
+﻿<span class="label label-success" ng-if="state === states.succeeded">{{:: completedText || 'Completed'}}</span>
+<span class="label label-danger" ng-if="state === states.failed">{{:: failedText || 'Failed'}}</span>
+<span class="label label-info" ng-if="state === states.running"><i class="fa fa-spinner fa-spin"></i> {{:: runningText || 'Running'}}</span>
+<span class="label label-default" ng-if="state === states.pending">{{:: pendingText || 'Pending'}}</span>

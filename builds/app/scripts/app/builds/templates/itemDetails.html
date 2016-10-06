@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-md-9 col-lg-9 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <app:item-property-status name="Metrics" property-state="item.metrics.state" on-expand="expandMetrics()">
+                    <app:metrics-status metrics="item.metrics"></app:metrics-status>
+                </app:item-property-status>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <app:item-property-status name="Build" property-state="item.build.state" on-expand="expandBuild()">
+                    <app:build-status build="item.build"></app:build-status>
+                </app:item-property-status>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <app:item-property-status name="Unit Test" property-state="item.unitTest.state" on-expand="expandUnitTest()">
+                    <app:test-status test="item.unitTest"></app:test-status>
+                </app:item-property-status>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <app:item-property-status name="Functional Test" property-state="item.functionalTest.state" on-expand="expandFunctionalTest()">
+                    <app:test-status test="item.functionalTest"></app:test-status>
+                </app:item-property-status>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <app:item-result item="item"
+                         on-find-issues="findIssues()"
+                         on-find-merged-build="findMergedBuild()"
+                         on-deploy-build="deployBuild(target)">
+        </app:item-result>        
+    </div>
+</div>

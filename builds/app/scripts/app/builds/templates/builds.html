@@ -1,0 +1,33 @@
+﻿<div class="block-flat">
+    <div class="row header">
+        <div class="col-md-2 col-sm-4 col-xs-8">
+            <h3>Changelist / Build</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs text-center">
+            <h3>Owner</h3>
+        </div>
+        <div class="col-md-2 col-sm-3 hidden-xs text-center">
+            <h3>Time Started</h3>
+        </div>
+        <div class="col-md-1 col-sm-2 col-xs-4 text-center">
+            <h3>State</h3>
+        </div>
+        <div class="col-md-1 hidden-sm hidden-xs text-center">
+            <h3>Metrics</h3>
+        </div>
+        <div class="col-md-1 hidden-sm hidden-xs text-center">
+            <h3>Build</h3>
+        </div>
+        <div class="col-md-1 hidden-sm hidden-xs text-center">
+            <h3>Unit Test</h3>
+        </div>
+        <div class="col-md-1 hidden-sm hidden-xs text-center">
+            <h3>Functional Test</h3>
+        </div>
+    </div>
+    <div class="content">
+        <app:accordion>
+            <app:item ng-repeat="item in items | orderBy:'-createDate' track by item.id" item="item"></app:item>
+        </app:accordion>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<div>
+    <h4 class="text-center">Result:</h4>
+    
+    <div ng-if="state.isSucceeded">
+        <div ng-if="state.isBuild">
+            <app:build-succeeded-result item="item" on-deploy-build="deployBuild(target)"></app:build-succeeded-result>
+        </div>
+
+        <div ng-if="state.isFirewall">
+            <app:firewall-succeeded-result item="item" on-find-merged-build="findMergedBuild()"></app:firewall-succeeded-result>
+        </div>
+    </div>
+
+    <div ng-if="state.isFailed">
+        <app:rejected-result item="item" on-find-issues="findIssues()"></app:rejected-result>
+    </div>
+</div>

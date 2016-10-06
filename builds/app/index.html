@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Builds</title>
+    <base href="/" />
+
+    <!-- DEV -->
+    <!--
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/theme.css" rel="stylesheet" />
+        <link href="css/font-awesome.css" rel="stylesheet" />
+        <link href="css/sweet-alert.css" rel="stylesheet" />
+        <link href="css/loader.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        -->
+
+    <!-- PRODUCTION -->
+    <link href="css/styles.min.css" rel="stylesheet" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
+
+    <!--[if IE 9]>
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="scripts/libs/shives/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="scripts/libs/angularjs/ie-shiv.js"></script>
+        <script src="scripts/libs/shives/json2.js"></script>
+    <![endif]-->
+
+    <!-- DEV -->
+    <!--<script src="scripts/libs/requirejs/require.js" data-main="scripts/app/main.dev"></script>-->
+    
+    <!-- PRODUCTION -->
+    <script src="./scripts/libs/requirejs/require.min.js"></script>
+    <script src="./scripts/libs/libs.min.js"></script>
+    <script src="./scripts/app/app.min.js"></script>
+    <script src="./scripts/app/main.js"></script>
+
+</head>
+<body>
+    <div ng-view>
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
+    </div>
+</body>
+</html>

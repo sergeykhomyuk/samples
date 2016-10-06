@@ -1,0 +1,16 @@
+﻿<div class="text-center">
+    <h3 class="text-success">Complete</h3>
+    <button class="btn btn-info btn-labeled fa fa-cloud-upload" ng-click="deployBuild()">Deploy</button>
+    to
+    <span class="dropdown btn btn-default">
+        <a href="javascript:void(0)" class="dropdown-toggle">
+            {{deployTarget.name}}
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li ng-repeat="target in targets">
+                <a href="javascript:void(0)" ng-click="selectDeployTarget(target)">{{:: target.name}}</a>
+            </li>
+        </ul>
+    </span>
+</div>

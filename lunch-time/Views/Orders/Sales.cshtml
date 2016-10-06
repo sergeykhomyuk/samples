@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Выдача заказов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-view></div>
+
+@using (Html.AngularTemplate("/template/admin/sales.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_Sales")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/courses-stats.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_CoursesStats")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/users-orders.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_UsersOrders")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/user-order.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_UserOrder")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/user-order/confirm-remove.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_ConfirmRemoveOrder")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/user-order/not-found.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_UserOrderNotFound")
+}
+
+@using (Html.AngularTemplate("/template/admin/sales/unknown-identity-number.tmpl"))
+{
+    @Html.Partial("Partials/Sales/_UnknownIdentityNumber")
+}

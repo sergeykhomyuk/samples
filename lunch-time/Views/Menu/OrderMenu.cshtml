@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Заказ обедов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-view></div>
+
+@using (Html.AngularTemplate("/template/user/menu.tmpl"))
+{
+    @Html.Partial("Partials/Menu/_Menu")
+}
+
+@using (Html.AngularTemplate("/template/user/menu/courses.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_Courses")
+}
+
+@using (Html.AngularTemplate("/template/user/menu/courses/course.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Courses/_Course")
+}
+
+@using (Html.AngularTemplate("/template/user/menu/orders.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Orders/_Orders")
+}
+
+@using (Html.AngularTemplate("/template/user/menu/orders/order.tmpl"))
+{
+    @Html.Partial("Partials/Menu/Orders/_Order")
+}

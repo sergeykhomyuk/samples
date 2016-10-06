@@ -1,0 +1,8 @@
+﻿<div class="panel item-property-status" ng-click="expand()" ng-class="{'panel-bordered-success': state.isSucceeded, 'panel-bordered-danger': state.isFailed}">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{::name}}
+        </h3>
+    </div>
+    <div class="panel-body" ng-transclude></div>
+</div>
